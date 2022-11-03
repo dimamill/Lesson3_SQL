@@ -1,3 +1,79 @@
+Создание таблицы workers
+CREATE TABLE workers 
+(
+    id INT PRIMARY KEY,
+    firstname CHARACTER VARYING(20) NOT NULL,
+    name CHARACTER VARYING(20) NOT NULL,
+	lastname CHARACTER VARYING(20) NOT NULL,
+    birthday DATE,
+	datastart DATE,
+	employeelevel CHARACTER VARYING(20),
+	salarylevel INT,
+	departmentid INT,
+	availability BIT
+);
+
+Создание таблицы departments
+
+CREATE TABLE departments 
+(
+    departmentid INT,
+    namedepartment CHARACTER VARYING(20),
+    departmentdirector CHARACTER VARYING(100),
+	  numberworkers INT
+    );
+Создание таблицы score
+
+CREATE TABLE score 
+(
+    id INT,
+    rangescore CHARACTER VARYING(5),
+    );
+    
+Добавление данных в таблицу workers    
+
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (1, 'Ivanov', 'Ivan', 'Ivanovich', '23-11-1988', '20-11-2021', 'jun', 50000, 101, '1');
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (2, 'Sidorov', 'Oleg', 'Vasilevich', '07-09-2000', '10-12-2020', 'middle', 67000, 102, '0'); 
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (3, 'Popov', 'Artem', 'Maksimovich', '07-09-1995', '05-17-2021', 'senior', 70000, 102, '1');
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (4, 'Petrov', 'Maksim', 'Popovich', '09-03-1999', '02-19-2020', 'lead', 100000, 103, '1');
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (5, 'Solin', 'Petr', 'Pavlovich', '01-05-2002', '12-12-2020', 'middle', 65000, 103, '0');
+
+Добавление данных в таблицу departments
+
+INSERT INTO departments (departmentid, departmentdirector, numberworkers) 
+VALUES (101, 'accountant', 'Kosareva S.Y.', 5)
+INSERT INTO departments (departmentid, departmentdirector, numberworkers) 
+VALUES (102, 'IT', 'Grigoryev E.I.', 3)
+INSERT INTO departments (departmentid, departmentdirector, numberworkers) 
+VALUES (103, 'security', 'Mironov I.A.', 4)
+
+Добавление данных в таблицу score
+
+INSERT INTO score (id, rangescore) 
+VALUES (1, 'A')
+INSERT INTO score (id, rangescore) 
+VALUES (2, 'B')
+INSERT INTO score (id, rangescore) 
+VALUES (3, 'C')
+INSERT INTO score (id, rangescore) 
+VALUES (4, 'D')
+INSERT INTO score (id, rangescore) 
+VALUES (5, 'E')
+
+Ваша команда расширяется и руководство запланировало открыть новый отдел – отдел Интеллектуального анализа данных. На начальном этапе в команду наняли одного руководителя отдела и двух сотрудников. Добавьте необходимую информацию в соответствующие таблицы
+
+INSERT INTO departments (departmentid, departmentdirector, numberworkers) 
+VALUES (104, 'intellect', 'Burov M.E.', 2)
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (6, 'Surov', 'Yuriy', 'Nikolaevich', '08-03-2001', '03-11-2022', 'middle', 35000, 104, '0');
+INSERT INTO workers (id, firstname, name, lastname, birthday, datastart, employeelevel, salarylevel, departmentid, availability) 
+VALUES (7, 'Guriev', 'Victor', 'Mihaylovich', '23-06-2000', '03-11-2022', 'jun', 25000, 104, '0');
+
 Уникальный номер сотрудника, его ФИО и стаж работы – для всех сотрудников компании
 SELECT id, firstname, name, lastname, ('03.11.2022'-datastart) AS expirience FROM workers
 Уникальный номер сотрудника, его ФИО и стаж работы – только первых 3-х сотрудников

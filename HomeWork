@@ -1,0 +1,10 @@
+Уникальный номер сотрудника, его ФИО и стаж работы – для всех сотрудников компании
+SELECT id, firstname, name, lastname, ('03.11.2022'-datastart) AS expirience FROM workers
+Уникальный номер сотрудника, его ФИО и стаж работы – только первых 3-х сотрудников
+SELECT id, firstname, name, lastname, ('03.11.2022'-datastart) AS expirience FROM workers LIMIT 3
+Уникальный номер сотрудников - водителей (103 допустим номер отдела водителей)
+SELECT ID FROM workers, departments WHERE workers.departmentid = departments.departmentid and departments.departmentid=103
+Выведите номера сотрудников, которые хотя бы за 1 квартал получили оценку D или E
+SELECT * FROM score WHERE rangescore IN ('D','E')
+Выведите самую высокую зарплату в компании.
+SELECT MAX(salarylevel)  FROM workers

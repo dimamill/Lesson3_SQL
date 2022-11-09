@@ -78,8 +78,8 @@ VALUES (7, 'Guriev', 'Victor', 'Mihaylovich', '23-06-2000', '03-11-2022', 'jun',
 SELECT id, firstname, name, lastname, ('03.11.2022'-datastart) AS expirience FROM workers
 Уникальный номер сотрудника, его ФИО и стаж работы – только первых 3-х сотрудников
 SELECT id, firstname, name, lastname, ('03.11.2022'-datastart) AS expirience FROM workers LIMIT 3
-Уникальный номер сотрудников - водителей (103 допустим номер отдела водителей)
-SELECT ID FROM workers, departments WHERE workers.departmentid = departments.departmentid and departments.departmentid=103
+Уникальный номер сотрудников - водителей 
+SELECT ID FROM workers WHERE availability='1'
 Выведите номера сотрудников, которые хотя бы за 1 квартал получили оценку D или E
 SELECT * FROM score WHERE rangescore IN ('D','E')
 Выведите самую высокую зарплату в компании.

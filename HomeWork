@@ -84,3 +84,35 @@ SELECT ID FROM workers WHERE availability='1'
 SELECT * FROM score WHERE rangescore IN ('D','E')
 Выведите самую высокую зарплату в компании.
 SELECT MAX(salarylevel)  FROM workers
+
+a.     Попробуйте вывести не просто самую высокую зарплату во всей команде, а вывести именно фамилию сотрудника с самой высокой зарплатой.
+SELECT firstname FROM workers WHERE salarylevel=(SELECT max(salarylevel) FROM workers)
+b.     Попробуйте вывести фамилии сотрудников в алфавитном порядке
+SELECT firstname FROM workers ORDER BY firstname
+c.     Рассчитайте средний стаж для каждого уровня сотрудников
+SELECT AVG('09.11.2022'-datastart) as avg_days FROM workers WHERE employeelevel='jun'
+SELECT AVG('09.11.2022'-datastart) as avg_days FROM workers WHERE employeelevel='middle'
+SELECT AVG('09.11.2022'-datastart) as avg_days FROM workers WHERE employeelevel='senior'
+SELECT AVG('09.11.2022'-datastart) as avg_days FROM workers WHERE employeelevel='lead'
+d.     Выведите фамилию сотрудника и название отдела, в котором он работает
+SELECT firstname, namedepartment FROM workers, departments WHERE workers.departmentid = departments.departmentid
+e.     Выведите название отдела и фамилию сотрудника с самой высокой зарплатой в данном отделе и саму зарплату также.
+SELECT firstname, namedepartment,(SELECT MAX(salarylevel)  
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='IT')
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE salarylevel=(SELECT MAX(salarylevel) 
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='IT')
+
+SELECT firstname, namedepartment,(SELECT MAX(salarylevel)  
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='accountant')
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE salarylevel=(SELECT MAX(salarylevel) 
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='accountant')
+
+SELECT firstname, namedepartment,(SELECT MAX(salarylevel)  
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='security')
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE salarylevel=(SELECT MAX(salarylevel) 
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='security')
+
+SELECT firstname, namedepartment,(SELECT MAX(salarylevel)  
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='intellect')
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE salarylevel=(SELECT MAX(salarylevel) 
+FROM workers INNER JOIN departments ON workers.departmentid = departments.departmentid WHERE namedepartment='intellect')
